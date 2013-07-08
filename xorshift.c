@@ -27,6 +27,13 @@ uint32_t xor128()
 	uint32_t t = (x^(x<<11)); x = y; y = z; z = w; return w = (w^(w>>19))^(t^(t>>8));
 }
 
+uint32_t xor160()
+{
+	static uint32_t x = 123456789, y = 362436069, z = 521288629,
+	                w = 88675123, v = 5783321;
+	uint32_t t = (x^(x>>2)); x = y; y = z; z = w; w = v; return v = (v^(v>>4))^(t^(t>>1));
+}
+
 int main(void)
 {
 	size_t i;
@@ -56,6 +63,13 @@ int main(void)
 	for(i=0; i<10; ++i)
 	{
 		printf("  %"PRIu32, xor128());
+	}
+	printf("\n\n");
+
+	printf("Xorshift160:");
+	for(i=0; i<10; ++i)
+	{
+		printf("  %"PRIu32, xor160());
 	}
 	printf("\n");
 
