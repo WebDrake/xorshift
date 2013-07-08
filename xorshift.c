@@ -31,7 +31,7 @@ uint32_t xor160()
 {
 	static uint32_t x = 123456789, y = 362436069, z = 521288629,
 	                w = 88675123, v = 5783321;
-	uint32_t t = (x^(x>>2)); x = y; y = z; z = w; w = v; return v = (v^(v>>4))^(t^(t>>1));
+	uint32_t t = (x^(x<<2)); x = y; y = z; z = w; w = v; return v = (v^(v>>4))^(t^(t>>1));
 }
 
 uint32_t xorwow()
