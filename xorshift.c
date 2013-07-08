@@ -5,7 +5,7 @@
 uint32_t xor32()
 {
 	static uint32_t y = 2463534242UL;
-	y^=(y<<13); y=(y>>17); return (y^=(y<<5));
+	y^=(y<<13); y^=(y>>17); return (y^=(y<<15));
 }
 
 uint32_t xor64()
