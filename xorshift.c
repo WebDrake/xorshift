@@ -14,6 +14,12 @@ uint32_t xor64()
 	uint32_t t = (x^(x<<10)); x = y; return y = (y^(y>>10))^(t^(t>>13));
 }
 
+uint32_t xor96()
+{
+	static uint32_t x = 123456789, y = 362436069, z = 521288629;
+	uint32_t t = (x^(x<<10)); x = y; y = z; return z = (z^(z>>26))^(t^(t>>5));
+}
+
 int main(void)
 {
 	size_t i;
@@ -29,6 +35,13 @@ int main(void)
 	for(i=0; i<10; ++i)
 	{
 		printf("  %"PRIu32, xor64());
+	}
+	printf("\n\n");
+
+	printf("Xorshift96:");
+	for(i=0; i<10; ++i)
+	{
+		printf("  %"PRIu32, xor96());
 	}
 	printf("\n");
 
